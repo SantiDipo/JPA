@@ -44,7 +44,7 @@ public class AutorDAO extends DAO<Autor> {
         super.conectar();
     }
 
-    public Autor buscarAutor(String nombre, Integer id) {
+    public Autor buscarAutor(String nombre) {
         conectar();
         em.getTransaction().begin();
         Autor autor = (Autor) em.createQuery("SELECT a FROM Autor a WHERE a.nombre like :nombre")

@@ -20,7 +20,9 @@ public class servicioLibro {
     private servicioEditorial se;
     private LibroDAO libroDAO;
 
-    public servicioLibro(LibroDAO libroDAO) {
+    public servicioLibro() {
+        this.sa = new servicioAutor();
+        this.se = new servicioEditorial();
         this.libroDAO = new LibroDAO();
     }
 
@@ -29,12 +31,9 @@ public class servicioLibro {
         this.se = se;
     }
 
-    public servicioLibro() {
-    }
-
-    public Libro crearLibro(Integer id,Boolean alta, Long isbn, String titulo, String anio, Integer ejemplares, Integer ejemplaresPrestados,
-        Integer ejemplaresRestantes, Autor autor, Editorial editorial) throws Exception {
-        Libro nuevolibro = new Libro();
+    public Libro crearLibro(Integer id, Boolean alta, Long isbn, String titulo, String anio, Integer ejemplares, Integer ejemplaresPrestados,
+            Integer ejemplaresRestantes, Autor autor, Editorial editorial) throws Exception {
+            Libro nuevolibro = new Libro();
 
         try {
 
@@ -50,27 +49,17 @@ public class servicioLibro {
             if (alta == false) {
                 throw new Exception("El libro esta dado de baja");
             }
-            System.out.println("Ingrese el nombre del libro");
+
             nuevolibro.setId(id);
             nuevolibro.setIsbn(isbn);
-            System.out.println(isbn);
             nuevolibro.setTitulo(titulo);
-            System.out.println(titulo);
             nuevolibro.setAnio(anio);
-            System.out.println(anio);
             nuevolibro.setEjemplares(ejemplares);
-            System.out.println(ejemplares);
             nuevolibro.setEjemplaresPrestados(ejemplaresPrestados);
-            System.out.println(ejemplaresPrestados);
             nuevolibro.setEjemplaresRestantes(ejemplaresRestantes);
-            System.out.println(ejemplaresRestantes);
             nuevolibro.setAutor(autor);
-            System.out.println(autor);
             nuevolibro.setEditorial(editorial);
-            System.out.println(editorial);
-            System.out.println(nuevolibro);
-// Al intentar guardar el objeto lanza una expecion
-//            libroDAO.guardar(nuevolibro); 
+            libroDAO.guardar(nuevolibro);
             return nuevolibro;
 
         } catch (Exception e) {
@@ -81,7 +70,7 @@ public class servicioLibro {
 
     public Libro buscarLibroPorIsbn(Long isbn) {
         try {
-            return libroDAO.buscarLibroPorIsbn(isbn, Integer.SIZE);
+            return libroDAO.buscarLibroPorIsbn(isbn);
         } catch (Exception e) {
             return null;
         }
@@ -90,7 +79,24 @@ public class servicioLibro {
 
     public Libro buscarLibroPorTitulo(String titulo) {
         try {
-            return libroDAO.buscarLibroPorTitulo(titulo, Integer.SIZE);
+            return libroDAO.buscarLibroPorTitulo(titulo);
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+    public Libro buscarLibroPorAutor(String nombre) {
+        try {
+            return libroDAO.buscarLibroPorAutor(nombre);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Libro buscarLibroPorEditorial(String nombre) {
+        try {
+            return libroDAO.buscarLibroPorEditorial(nombre);
         } catch (Exception e) {
             return null;
         }

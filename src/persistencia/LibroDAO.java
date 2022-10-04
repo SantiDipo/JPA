@@ -43,38 +43,42 @@ public class LibroDAO extends DAO<Libro> {
         super.conectar(); 
     }
 
-    public Libro buscarLibroPorIsbn(Long isbn, Integer id) {
+    public Libro buscarLibroPorIsbn(Long isbn) {
         conectar();
         em.getTransaction().begin();
         Libro libro = (Libro) em.createQuery("SELECT a FROM Libro a WHERE a.isbn like :isbn")
                 .setParameter("isbn", isbn).getSingleResult();
+        System.out.println(libro);
         desconectar();
         return libro;
     }
 
-    public Libro buscarLibroPorTitulo(String titulo, Integer id) {
+    public Libro buscarLibroPorTitulo(String titulo) {
         conectar();
         em.getTransaction().begin();
         Libro libro = (Libro) em.createQuery("SELECT a FROM Libro a WHERE a.titulo like :titulo")
                 .setParameter("titulo", titulo).getSingleResult();
+        System.out.println(libro);
         desconectar();
         return libro;
     }
 
-    public Libro buscarLibroPorAutor(Autor autor, Integer id) {
+    public Libro buscarLibroPorAutor(String nombre) {
         conectar();
         em.getTransaction().begin();
-        Libro libro = (Libro) em.createQuery("SELECT a FROM Libro a WHERE a.autor like :autor")
-                .setParameter("autor", autor).getSingleResult();
+        Libro libro = (Libro) em.createQuery("SELECT l FROM Libro l JOIN l.autor a WHERE a.nombre like :nombre")
+                .setParameter("nombre", nombre).getSingleResult();
+        System.out.println(libro);
         desconectar();
         return libro;
     }
 
-    public Libro buscarLibroPorEditorial(Editorial editorial, Integer id) {
+    public Libro buscarLibroPorEditorial(String nombre) {
         conectar();
         em.getTransaction().begin();
-        Libro libro = (Libro) em.createQuery("SELECT a FROM Libro a WHERE a.editorial like :editorial")
-                .setParameter("editorial", editorial).getSingleResult();
+        Libro libro = (Libro) em.createQuery("SELECT l FROM Libro l JOIN l.editorial e WHERE e.nombre like :nombre")
+                .setParameter("nombre", nombre).getSingleResult();
+        System.out.println(libro);
         desconectar();
         return libro;
     }

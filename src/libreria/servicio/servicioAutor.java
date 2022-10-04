@@ -48,7 +48,6 @@ public class servicioAutor {
             if (alta == false) {
                 throw new Exception("El autor esta dado de baja");
             }
-            System.out.println("Ingrese el nombre del autor");
 
             nuevoautor.setNombre(nombre);
 
@@ -61,7 +60,7 @@ public class servicioAutor {
 
     public Autor buscarAutor(String nombre) {
         try {
-            return autorDAO.buscarAutor(nombre, Integer.SIZE);
+            return autorDAO.buscarAutor(nombre);
         } catch (Exception e) {
             return null;
         }
