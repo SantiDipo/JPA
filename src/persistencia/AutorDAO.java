@@ -60,7 +60,7 @@ public class AutorDAO {
         em.getTransaction().begin();
         Autor autor = (Autor) em.createQuery("SELECT a FROM Autor a WHERE a.nombre like :nombre")
                 .setParameter("nombre", nombre).getSingleResult();
-
+        System.out.println(autor);
         desconectar();
         return autor;
     }

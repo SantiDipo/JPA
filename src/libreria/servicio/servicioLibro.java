@@ -32,8 +32,8 @@ public class servicioLibro {
     public servicioLibro() {
     }
 
-    public Libro crearLibro(Boolean alta, Long isbn, String titulo, String anio, Integer ejemplares, Integer ejemplaresPrestados,
-            Integer ejemplaresRestantes, Autor autor, Editorial editorial) throws Exception {
+    public Libro crearLibro(Integer id,Boolean alta, Long isbn, String titulo, String anio, Integer ejemplares, Integer ejemplaresPrestados,
+        Integer ejemplaresRestantes, Autor autor, Editorial editorial) throws Exception {
         Libro nuevolibro = new Libro();
 
         try {
@@ -51,7 +51,7 @@ public class servicioLibro {
                 throw new Exception("El libro esta dado de baja");
             }
             System.out.println("Ingrese el nombre del libro");
-
+            nuevolibro.setId(id);
             nuevolibro.setIsbn(isbn);
             System.out.println(isbn);
             nuevolibro.setTitulo(titulo);

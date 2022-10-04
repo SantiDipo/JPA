@@ -38,9 +38,8 @@ public class libreria {
 
         autor = sa.crearAutor(Integer.SIZE, Boolean.TRUE, "rober");
         editorial = se.crearEditorial(Integer.SIZE, Boolean.TRUE, "facu");
-        libro= sl.crearLibro(Boolean.TRUE, 9788437622156L, "Don Quijote de la Mancha", "1605", 100, 50, 50, autor, editorial);
+        libro= sl.crearLibro(Integer.SIZE, Boolean.TRUE, 9788437622156L, "Don Quijote de la Mancha", "1605", 100, 50, 50, autor, editorial);
         sa.buscarAutor("CORTAZAR");
 
     }
-
 }
