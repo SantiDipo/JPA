@@ -14,45 +14,30 @@ import libreria.entidad.Editorial;
  *
  * @author Santiago D'Ippolito
  */
-public class EditorialDAO {
+public class EditorialDAO extends DAO<Editorial> {
 
-    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA");
-    private EntityManager em = emf.createEntityManager();
-
-    public void conectar() {
-        if (!em.isOpen()) {
-            em = emf.createEntityManager();
-        }
-    }
-
-    public void desconectar() {
-        if (em.isOpen()) {
-            em.close();
-        }
-    }
-
-    public void guardar(Editorial editorial) {
-        conectar();
-        em.getTransaction().begin();
-        em.persist(editorial);
-        em.getTransaction().commit();
-        desconectar();
-    }
-
-    public void editar(Editorial editorial) {
-        conectar();
-        em.getTransaction().begin();
-        em.merge(editorial);
-        em.getTransaction().commit();
-        desconectar();
-    }
-
+    @Override
     public void eliminar(Editorial editorial) {
-        conectar();
-        em.getTransaction().begin();
-        em.remove(editorial);
-        em.getTransaction().commit();
-        desconectar();
+        super.eliminar(editorial);
     }
 
+    @Override
+    public void editar(Editorial editorial) {
+        super.editar(editorial);
+    }
+
+    @Override
+    public void guardar(Editorial editorial) {
+        super.guardar(editorial);
+    }
+
+    @Override
+    public void desconectar() {
+        super.desconectar();
+    }
+
+    @Override
+    public void conectar() {
+        super.conectar();
+    }
 }

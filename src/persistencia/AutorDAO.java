@@ -14,45 +14,34 @@ import libreria.entidad.Autor;
  *
  * @author Santiago D'Ippolito
  */
-public class AutorDAO {
+public class AutorDAO extends DAO<Autor> {
 
     protected final EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA");
     protected EntityManager em = emf.createEntityManager();
 
+    @Override
+    public void eliminar(Autor autor) {
+        super.eliminar(autor);
+    }
+
+    @Override
+    public void editar(Autor autor) {
+        super.editar(autor);
+    }
+
+    @Override
+    public void guardar(Autor autor) {
+        super.guardar(autor);
+    }
+
+    @Override
+    public void desconectar() {
+        super.desconectar();
+    }
+
+    @Override
     public void conectar() {
-        if (!em.isOpen()) {
-            em = emf.createEntityManager();
-        }
-    }
-
-     public void desconectar() {
-        if (em.isOpen()) {
-            em.close();
-        }
-    }
-
-     public void guardar(Autor autor) {
-        conectar();
-        em.getTransaction().begin();
-        em.persist(autor);
-        em.getTransaction().commit();
-        desconectar();
-    }
-
-     public void editar(Autor autor) {
-        conectar();
-        em.getTransaction().begin();
-        em.merge(autor);
-        em.getTransaction().commit();
-        desconectar();
-    }
-
-     public void eliminar(Autor autor) {
-        conectar();
-        em.getTransaction().begin();
-        em.remove(autor);
-        em.getTransaction().commit();
-        desconectar();
+        super.conectar();
     }
 
     public Autor buscarAutor(String nombre, Integer id) {

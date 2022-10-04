@@ -15,6 +15,7 @@ import libreria.entidad.Libro;
 import libreria.servicio.servicioAutor;
 import libreria.servicio.servicioEditorial;
 import libreria.servicio.servicioLibro;
+import persistencia.LibroDAO;
 
 /**
  *
@@ -40,6 +41,8 @@ public class libreria {
         editorial = se.crearEditorial(Integer.SIZE, Boolean.TRUE, "facu");
         libro= sl.crearLibro(Integer.SIZE, Boolean.TRUE, 9788437622156L, "Don Quijote de la Mancha", "1605", 100, 50, 50, autor, editorial);
         sa.buscarAutor("CORTAZAR");
+        LibroDAO d1 = new LibroDAO();
+        d1.guardar(libro);
 
     }
 }

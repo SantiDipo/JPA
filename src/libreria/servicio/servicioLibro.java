@@ -69,7 +69,8 @@ public class servicioLibro {
             nuevolibro.setEditorial(editorial);
             System.out.println(editorial);
             System.out.println(nuevolibro);
-            libroDAO.guardar(nuevolibro);
+// Al intentar guardar el objeto lanza una expecion
+//            libroDAO.guardar(nuevolibro); 
             return nuevolibro;
 
         } catch (Exception e) {
