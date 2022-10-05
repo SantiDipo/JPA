@@ -71,18 +71,17 @@ public class libreria {
         System.out.println("Elija el autor que desea buscar");
         sa.buscarAutor(leer.nextLine());
         
-//        System.err.println("Elija libro por ISBN");
-//        sl.buscarLibroPorIsbn(8788437622156L);
-//        leer.nextLine();
+        System.err.println("Elija libro por ISBN");
+        sl.buscarLibroPorIsbn(8788437622156L);
         
         System.out.println("Elija el titulo del libro que desea buscar");
-        sl.buscarLibroPorTitulo(leer.nextLine());
+        sl.buscarLibroPorTitulo(titulo1);
         
         System.out.println("Elija el autor del libro que desee");
-        sl.buscarLibroPorAutor(leer.nextLine());
+        sl.buscarLibroPorAutor(nombreA1);
         
         System.out.println("Elija la editorial del libro que desea");
-        sl.buscarLibroPorEditorial(leer.nextLine());
+        sl.buscarLibroPorEditorial(nombreE2);
 
     }
 }

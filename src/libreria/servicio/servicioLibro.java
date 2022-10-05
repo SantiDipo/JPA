@@ -39,17 +39,14 @@ public class servicioLibro {
 
             if (isbn == null || isbn == 0) {
                 throw new Exception("Debe ingresar el ISBN del libro o ingresar un ISBN valido");
-
             }
             if (titulo == null || titulo.trim().isEmpty()) {
                 throw new Exception("Debe ingresar el titulo del libro");
-
             }
-
             if (alta == false) {
                 throw new Exception("El libro esta dado de baja");
             }
-
+            
             nuevolibro.setId(id);
             nuevolibro.setIsbn(isbn);
             nuevolibro.setTitulo(titulo);
@@ -65,7 +62,6 @@ public class servicioLibro {
         } catch (Exception e) {
             throw e;
         }
-
     }
 
     public Libro buscarLibroPorIsbn(Long isbn) {
