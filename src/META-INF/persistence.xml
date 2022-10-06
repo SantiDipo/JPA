@@ -5,6 +5,7 @@
     <class>libreria.entidad.Libro</class>
     <class>libreria.entidad.Autor</class>
     <class>libreria.entidad.Editorial</class>
+    <class>libreria.entidad.Cliente</class>
     <class>libreria.entidad.Prestamo</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/libreria?zeroDateTimeBehavior=convertToNull"/>

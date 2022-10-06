@@ -37,6 +37,16 @@ public class PrestamoDAO extends DAO<Prestamo>{
     public void guardar(Prestamo prestamo) {
         super.guardar(prestamo); //To change body of generated methods, choose Tools | Templates.
     }
+    
+     public Prestamo buscarPrestamoPorCliente(String apellido) {
+        conectar();
+        em.getTransaction().begin();
+        Prestamo prestamo = (Prestamo) em.createQuery("SELECT p FROM Prestamo p JOIN p.cliente c WHERE c.apellido like :apellido")
+                .setParameter("apellido", apellido).getSingleResult();
+        System.out.println(prestamo);
+        desconectar();
+        return prestamo;
+    }
 
     
     

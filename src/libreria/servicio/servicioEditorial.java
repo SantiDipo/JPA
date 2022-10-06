@@ -15,10 +15,17 @@ import persistencia.EditorialDAO;
  */
 public class servicioEditorial {
 
+    private servicioAutor sa;
+    private servicioLibro sl;
     private EditorialDAO editorialdao;
 
     public servicioEditorial() {
         editorialdao = new EditorialDAO();
+    }
+    
+    public void setServicios(servicioLibro sl, servicioAutor sa) {
+        this.sl = sl;
+        this.sa = sa;
     }
 
     Scanner leer = new Scanner(System.in);
@@ -34,13 +41,13 @@ public class servicioEditorial {
             }
             if (nombre == null || nombre.trim().isEmpty()) {
                 System.out.println("Debe ingresar el nombre de la Editorial");
-                
+
             }
             if (alta == false) {
                 System.out.println("La Editorial esta dada de baja");
 
             }
-            
+
             nuevaEditorial.setNombre(nombre);
             editorialdao.guardar(nuevaEditorial);
             return nuevaEditorial;

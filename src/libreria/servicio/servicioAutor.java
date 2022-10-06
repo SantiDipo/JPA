@@ -21,11 +21,17 @@ import persistencia.AutorDAO;
  * @author Santiago D'Ippolito
  */
 public class servicioAutor {
-
+    private servicioLibro sl;
+    private servicioEditorial se;
     private AutorDAO autorDAO;
 
     public servicioAutor() {
         autorDAO = new AutorDAO();
+    }
+    
+    public void setServicios(servicioLibro sl, servicioEditorial se) {
+        this.sl = sl;
+        this.se = se;
     }
 
     Scanner leer = new Scanner(System.in);
